@@ -1,4 +1,4 @@
-package com.board;
+package com.pjt;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -44,10 +44,9 @@ public class RestfulAdapter {
 		System.out.println(result);
 		return callback + "(" + result + ")";
 	}
-
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public void update() {
-		System.out.println("update");
+		
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
@@ -56,33 +55,9 @@ public class RestfulAdapter {
 	}
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public String list(@RequestParam HashMap<String, Object> param) {
-		System.out.println(param);
-		String callback = (String) param.get("callback");
-		System.out.println(callback);
+	public void list(){
 		
-		HashMap<String, Object> hashmap = new HashMap<String, Object>();
-		hashmap.put("price", param.get("price"));
-		hashmap.put("dprt", param.get("dprt"));
-		hashmap.put("dprt_date", param.get("dprt_date"));
-		hashmap.put("ariv", param.get("ariv"));
-		hashmap.put("ariv_date", param.get("ariv_date"));
 
-		String result = null;
-		ObjectMapper mapper = new ObjectMapper();
-		try {
-			result = mapper.writeValueAsString(hashmap);
-		} catch (JsonGenerationException e) {
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		System.out.println(result);	
-		
-		return callback + "(" + result + ")";	
 	}
 
 	@RequestMapping(value = "/listdetail", method = RequestMethod.GET)

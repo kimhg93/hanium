@@ -1,4 +1,4 @@
-package com.board;
+package com.pjt;
 
 public class VO {
 	private String price;

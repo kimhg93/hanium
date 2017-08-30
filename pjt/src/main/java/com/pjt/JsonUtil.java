@@ -1,4 +1,4 @@
-package com.board;
+package com.pjt;
 
 import java.io.IOException;
 import java.util.HashMap;

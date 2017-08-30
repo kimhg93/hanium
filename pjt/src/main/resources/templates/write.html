@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TEST</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="http://yannygo.me/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="http://yannygo.me/css/css/clean-blog.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="http://yannygo.me/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="http://yannygo.me/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>    
+    <script src="http://yannygo.me/js/main.js"></script>
+    <style>
+        table {
+            width: 100%;
+            text-align: center;
+            font-size: 16px;
+        }
+        
+        tr {
+            height: 45px;
+            border-bottom: 1px solid #dedede;
+        }
+        
+        table input[type=text] {
+            border: 0;
+            width: 100%;
+            height: 42px;
+        }
+        
+        .td_tlt {
+            border-bottom: 3px solid #525252;
+            border-top: 1px solid #525252;
+            color: #000000;
+            font-weight: 600
+        }
+        
+        .brd_rgt {
+            border-right: 1px solid #dedede;
+        }
+        
+        .price {
+            padding: 0 10px;
+            font-size: 18px;
+        }
+        
+        .option {
+            width: 20px;
+            height: 20px;
+            font-size: 18px;
+            vertical-align: bottom;
+        }
+        
+        .btn1 {
+            border: 0;
+            width: 100px;
+            height: 45px;
+            font-size: 16px;
+            background-color: #4b4b4b;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        @media screen and (max-width:640px) {
+            .option {
+                font-size: 16px;
+            }
+            table {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<script>
+
+$(document).ready(function() {
+    $('#btn1').click(function() {
+        var param = $("form[name=form1]").serialize();
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/insert",
+            data: param,
+            dataType: 'json',
+            success: function(data) {
+            	alert(data.test1+data.test2);
+            },
+            error: function(data) {
+                alert("error");
+            }
+        });
+    });
+});
+
+
+</script>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="list.html" style="">TEST</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" style="">
+                    <!--                    <li>
+                        <a href="index.html" style="">Home</a>
+                    </li>-->
+                    <li>
+                        <a href="list.html" style="">LIST</a>
+                    </li>
+                    <li>
+                        <a href="write.html" style="">NEW</a>
+                    </li>
+                    <li>
+                        <a href="login.html" style="">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/home-bg.jpg');margin-bottom:0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading" style="padding:50px 0;">
+                        <h2>정보등록</h2>
+                        <hr class="small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <hr>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div style="width:100%;text-align:center" align="center">
+                <input type="radio" name="chk_info" value="화주" class="option" id="option1" checked onclick="javascript:option(1);"><span style="font-size:16px;"> 화주</span> &emsp;&emsp;
+                <input type="radio" name="chk_info" value="차주" class="option" id="option2" onclick="javascript:option(2);"><span style="font-size:16px;"> 차주</span>
+            </div>
+            <br><br>
+
+            <script>
+            </script>
+            <!-- 화주 테이블-->
+            <form name="form1" method="post" url="">
+                <table cellspacing="0" cellpadding="0" id="send" name="table1">
+                    <tr style="border:0px;">
+                        <td style="font-weight:600;font-size:16px">운임&emsp;>></td>
+                        <td style="border:1px solid black">
+                            <input class="price" id="price" name="price" type="text" placeholder="운임을 입력하세요.">
+                        </td>
+                        <td border="0">&nbsp;</td>
+                        <td border="0">&nbsp;</td>
+                    </tr>
+                    <tr border="0"></tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">운송정보</td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="brd_rgt">출발지</td>
+                        <td width="35%" class="brd_rgt"><input type="text" name="dprt" id="dprt"></td>
+                        <td width="15%" class="brd_rgt">출발일시</td>
+                        <td width="35%"><input type="text" name="dprt_date" id="fromDate"></td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">도착지</td>
+                        <td class="brd_rgt"><input type="text" name="ariv" id="ariv"></td>
+                        <td class="brd_rgt">도착일시</td>
+                        <td><input type="text" name="ariv_date" id="toDate"></td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">화물명</td>
+                        <td class="brd_rgt"><input type="text" name="cargo" id="cargo"></td>
+                        <td class="brd_rgt">화물종류</td>
+                        <td><input type="text" name="cargo_kind" id="cargo_kind"></td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">화물중량</td>
+                        <td class="brd_rgt"><input type="text" name="cargo_weight" id="cargo_weight"></td>
+                        <td class="brd_rgt">경유지</td>
+                        <td><input type="text" name="via" id="via"></td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">보내는사람</td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">성명</td>
+                        <td class="brd_rgt"><input type="text" name="from" id="from"></td>
+                        <td class="brd_rgt">연락처</td>
+                        <td><input type="text" name="from_tel" id="from_tel"></td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">받는사람</td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">성명</td>
+                        <td class="brd_rgt"><input type="text" name="to" id="to"></td>
+                        <td class="brd_rgt">연락처</td>
+                        <td><input type="text" name="to_tel" id="to_tel"></td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">기타사항</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><textarea style="width:100%;height:150px;" name="ps" id="ps"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="border:0;" border="0">
+                            <input type="button" value="뒤로" class="btn1" onclick="history.back(-1);">
+                            <input type="button" value="등록" class="btn1" id="btn1">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <!-- 차주테이블 -->
+            <form name="form2" method="post" url="">
+                <table cellspacing="0" cellpadding="0" id="driver" style="display:none" name="table2">
+                    <tr style="border:0px;">
+                        <td style="font-weight:600;font-size:16px">희망운임&emsp;>></td>
+                        <td style="border:1px solid black"><input class="price" id="price" name="price" type="text" placeholder="운임을 입력하세요."></td>
+                        <td border="0">&nbsp;</td>
+                        <td border="0">&nbsp;</td>
+                    </tr>
+                    <tr border="0"></tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">운송정보</td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="brd_rgt">출발지</td>
+                        <td width="35%" class="brd_rgt"><input type="text"></td>
+                        <td width="15%" class="brd_rgt">출발시간</td>
+                        <td width="35%"><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">도착지</td>
+                        <td class="brd_rgt"><input type="text"></td>
+                        <td class="brd_rgt">도착시간</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">차량명</td>
+                        <td class="brd_rgt"><input type="text"></td>
+                        <td class="brd_rgt">차량종류</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">적재량</td>
+                        <td class="brd_rgt"><input type="text"></td>
+                        <td class="brd_rgt">경유 가능 여부</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">기사님 정보</td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">성명</td>
+                        <td class="brd_rgt"><input type="text"></td>
+                        <td class="brd_rgt">연락처</td>
+                        <td><input type="text"></td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">기타사항</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><br><textarea style="width:100%;height:150px;"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <input type="button" value="뒤로" class="btn1" onclick="history.back(-1);">
+                            <input type="button" value="등록" class="btn1" onclick="javascript:test(2);">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/js/jqBootstrapValidation.js"></script>
+    <script src="js/js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
