@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TEST</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/member.css" />
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+2017dlrlwbglip
+</head>
+<style>
+    .option {
+        width: 20px;
+        height: 20px;
+        font-size: 18px;
+        vertical-align: bottom;
+    }
+</style>
+<script>
+    $(document).ready(function() {
+        $('#btnLogin').click(function() {
+            var in_id = $('#user_id').val();
+            var in_pw = $('#user_pw').val();
+            if (in_id == "") {
+                document.getElementById("id_msg").innerHTML = "아이디를 입력해 주세요.";
+                document.getElementById("pw_msg").innerHTML = "&nbsp;";
+                return;
+            } else if (in_pw == "") {
+                document.getElementById("id_msg").innerHTML = "&nbsp;";
+                document.getElementById("pw_msg").innerHTML = "비밀번호를 입력해 주세요.";
+                return;
+            }
+            //var action = $('#frmLogin').attr("action");
+            var param;
+            param = $("form[name=form1]").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: param,
+                success: function(data) {
+                    location.href = list.html;
+                },
+                error: function(data) {
+                    alert("error");
+                }
+            });
+        });
+    });
+</script>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top" style="background-color:#3e3e3e">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="list.html" style="">TEST</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" style="color:black">
+                    <!--                    <li>
+                        <a href="index.html" style="color:black">Home</a>
+                    </li>-->
+                    <li>
+                        <a href="list.html">LIST</a>
+                    </li>
+                    <li>
+                        <a href="write.html">NEW</a>
+                    </li>
+                    <li>
+                        <a href="login.html">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <section class="container" id="container">
+        <article class="half">
+            <form name="frmLogin" id="frmLogin" action="" method="post">
+                <input type="radio" name="chk_info" value="화주" class="option" id="option1" checked onclick=""><span style="font-size:16px;"> 화주</span> &emsp;&emsp;
+                <input type="radio" name="chk_info" value="차주" class="option" id="option2" onclick=""><span style="font-size:16px;"> 차주</span>
+                <br><br>
+                <div class="content">
+                    <div class="signin-cont cont" style="display:block;" id="login_cont">
+                        <input type="text" name="user_id" id="user_id" class="inpt" required="" placeholder="Your email">
+                        <label for="email">Your id</label>
+                        <p id="id_msg" class="msg" align="center" style="">&nbsp;</p>
+                        <input type="password" name="user_pw" id="user_pw" class="inpt" required="" placeholder="Your password">
+                        <label for="password">Your password</label>
+                        <p id="pw_msg" class="msg" align="center">&nbsp;</p>
+                        <br><br>
+                        <input type="button" id="btnLogin" value="로그인" class="submit" style="margin-bottom:12px;">
+                        <div class="submit-wrap">
+                            <!-- <input type="submit" value="Sign in" class="submit"> -->
+                            <!--<input type="button" id="" value="회원가입" class="submit" onclick="javascript:go_signup();">-->
+                            <!--<a href="#" class="more">Forgot your password?</a>-->
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </article>
+    </section>
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>

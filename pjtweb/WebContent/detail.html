@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>TEST</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/clean-blog.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <link href="/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="js/main.js"></script>
+    <style>
+        table {
+            width: 100%;
+            text-align: center;
+        }
+        
+        #send {
+            font-size: 16px;
+        }
+        
+        #driver {
+            font-size: 16px;
+        }
+        
+        tr {
+            height: 45px;
+            border-bottom: 1px solid #dedede;
+        }
+        
+        table input[type=text] {
+            border: 0;
+            width: 100%;
+            height: 42px;
+        }
+        
+        .td_tlt {
+            border-bottom: 3px solid #525252;
+            border-top: 1px solid #525252;
+            color: #000000;
+            font-weight: 600
+        }
+        
+        .brd_rgt {
+            border-right: 1px solid #dedede;
+        }
+        
+        .price {
+            padding: 0 10px;
+            font-size: 18px;
+        }
+        
+        .option {
+            width: 20px;
+            height: 20px;
+            font-size: 18px;
+            vertical-align: bottom;
+        }
+        
+        .btn1 {
+            border: 0;
+            width: 100px;
+            height: 45px;
+            font-size: 16px;
+            background-color: #4b4b4b;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        
+        .datetimepicker td,
+        .datetimepicker th {
+            width: 40px;
+        }
+        
+        @media screen and (max-width:640px) {
+            .option {
+                font-size: 16px;
+            }
+            table {
+                font-size: 12px;
+            }
+            #send {
+                font-size: 12px;
+            }
+            #driver {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<script>
+    $(document).ready(function() {
+        $('#btn_submit').click(function() {
+            if(field_chk_write(1)==false){return;}/*필드체크 함수*/
+            var param;           
+            param = $("form[name=form1]").serialize();
+            $.ajax({
+                type: "POST",
+                url: "/",
+                data: param,
+                success: function(data) {
+                    alert("성공");
+                },
+                error: function(data) {
+                    alert("error");
+                }
+            });
+        });
+    });
+    
+    $(document).ready(function() {
+    $('#btn_submit2').click(function() {
+        if(field_chk_write(2)==false){return;}/*필드체크 함수*/
+        var param;           
+        param = $("form[name=form2]").serialize();
+        $.ajax({
+            type: "POST",
+            url: "/",
+            data: param,
+            success: function(data) {
+                alert("성공");
+            },
+            error: function(data) {
+                alert("error");
+            }
+        });
+    });
+});
+</script>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="list.html" style="">TEST</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right" style="">
+                <!--<li>
+                        <a href="index.html" style="">Home</a>
+                    </li>-->
+                    <li>
+                        <a href="list.html" style="">LIST</a>
+                    </li>
+                    <li>
+                        <a href="write.html" style="">NEW</a>
+                    </li>
+                    <li>
+                        <a href="login.html" style="">LOGIN</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('img/home-bg.jpg');margin-bottom:0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <div class="site-heading" style="padding:50px 0;">
+                        <h2>정보</h2>
+                        <hr class="small">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <hr>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <script>
+            </script>
+            <!-- 화주 테이블-->
+            <form name="form1" method="post" url="">
+                <table cellspacing="0" cellpadding="0" id="send" name="table1">
+                    <tr style="border:0px;">
+                        <td style="font-weight:600;font-size:16px">운임&emsp;>></td>
+                        <td style="border:1px solid black">
+                            100000
+                        </td>
+                        <td border="0">&nbsp;</td>
+                        <td border="0">&nbsp;</td>
+                    </tr>
+                    <tr border="0"></tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">운송정보</td>
+                    </tr>
+                    <tr>
+                        <td width="15%" class="brd_rgt">출발지</td>
+                        <td width="35%" class="brd_rgt">서울시 강남구 역삼동 123-1</td>
+                        <td width="15%" class="brd_rgt">출발시간</td>
+                        <td width="35%">2017-08-09 12:00</td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">도착지</td>
+                        <td class="brd_rgt">경기도 성남시 123-2</td>
+                        <td class="brd_rgt">도착시간</td>
+                        <td>2017-08-09 19:00</td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">화물명</td>
+                        <td class="brd_rgt">테스트</td>
+                        <td class="brd_rgt">화물종류</td>
+                        <td>테스트</td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">화물중량</td>
+                        <td class="brd_rgt">3톤</td>
+                        <td class="brd_rgt">경유지</td>
+                        <td>없음</td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">보내는사람</td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">성명</td>
+                        <td class="brd_rgt">홍길동</td>
+                        <td class="brd_rgt">연락처</td>
+                        <td>000-0000-0000</td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">받는사람</td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">성명</td>
+                        <td class="brd_rgt">홍길동</td>
+                        <td class="brd_rgt">연락처</td>
+                        <td>000-0000-0000</td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">기사님 정보</td>
+                    </tr>
+                    <tr>
+                        <td class="brd_rgt">성명</td>
+                        <td class="brd_rgt"><input type="text" name="driver" id="driver"></td>
+                        <td class="brd_rgt">연락처</td>
+                        <td><input type="text" name="driver_tel" id="driver_tel"></td>
+                    </tr>
+                    <tr style="height:40px;">
+                        <td colspan="4" class="td_tlt">기타사항</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" style="border:0;" border="0">                            
+                            <input type="button" value="매칭" class="btn1" id="btn_submit">
+                            <input type="button" value="수정" class="btn1" id="" onclick="location.href='write.html'">
+                            <input type="button" value="삭제" class="btn1" id="" onclick="location.href='write.html'">
+                        </td>
+                    </tr>
+                </table>
+            </form>           
+        </div>
+    </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                    <ul class="list-inline text-center">
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="fa-stack fa-lg">
+                                    <i class="fa fa-circle fa-stack-2x"></i>
+                                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </a>
+                        </li>
+                    </ul>
+                    <p class="copyright text-muted">Copyright &copy; Your Website 2016</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="/js/jquery-1.8.3.min.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/clean-blog.min.js"></script>
+
+</body>
+
+</html>
